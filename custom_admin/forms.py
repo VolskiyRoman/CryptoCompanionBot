@@ -1,10 +1,7 @@
 from django import forms
-from .models import TelegramUser
-
-
-from django import forms
 from django.core.validators import RegexValidator
 from .models import TelegramUser
+
 
 class TelegramUserForm(forms.ModelForm):
     phone_number_validator = RegexValidator(

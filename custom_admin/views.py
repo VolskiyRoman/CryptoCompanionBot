@@ -9,12 +9,9 @@ def telegram_users(request):
 
 
 def delete_user(request, user_id):
-    try:
-        user_to_delete = TelegramUser.objects.get(id=user_id)
-        user_to_delete.delete()
-        return redirect('telegram_users')
-    except TelegramUser.DoesNotExist:
-        return render(request, 'error_page.html', {'error_message': 'User not found'})
+    user_to_delete = TelegramUser.objects.get(id=user_id)
+    user_to_delete.delete()
+    return redirect('telegram_users')
 
 
 def create_user(request):

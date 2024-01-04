@@ -101,11 +101,9 @@ def handle_trade_option(call):
     user_id = call.from_user.id
     trade_option, crypto_symbol = call.data.split("_")[0], call.data.split("_")[1]
 
-    # Перевірка, чи коректно розібрано дані
     if trade_option in ["sell", "buy"] and crypto_symbol:
         action = "selling" if trade_option == "sell" else "buying"
 
-        # Отримання курсів для відповідної криптовалюти
         rate_usd, rate_reverse = get_crypto_exchange_rate(crypto_symbol)
 
         if action == "selling" and rate_usd is not None:
